@@ -30,7 +30,6 @@ export function useTeleparty() {
         else if (socketMessage.type === SocketMessageTypes.SET_TYPING_PRESENCE) {
           const { usersTyping } = socketMessage.data
           if (Array.isArray(usersTyping)) {
-            // Exclude self from the typing list
             setTypingUsers(usersTyping.filter((u: string) => u !== nickname))
           }
         }
