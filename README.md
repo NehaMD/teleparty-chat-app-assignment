@@ -1,73 +1,40 @@
-# React + TypeScript + Vite
+# Teleparty Chat App Assignment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A real-time chat application built with **React** and **TypeScript**, simulating a simplified Teleparty chat experience. Users can create or join chat rooms, send messages, see typing presence, and optionally set a user icon.
 
-Currently, two official plugins are available:
+## Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[https://NehaMD.github.io/teleparty-chat-app-assignment/](https://NehaMD.github.io/teleparty-chat-app-assignment/)
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Create & Join Chat Rooms:** Start a new chat or join an existing one using a Room ID.  
+- **Real-Time Messaging:** Messages appear instantly using WebSocket communication.  
+- **Typing Indicators:** See when you or other users are typing.  
+- **Optional User Icons:** Users can set a display avatar in the chat.  
+- **Clean UI:** Responsive, and readable interface for ease of use.
 
-## Expanding the ESLint configuration
+## Key Technical Highlights
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **WebSocket Integration:** Implemented a custom hook (`useTeleparty`) to handle WebSocket connections using the `teleparty-websocket-lib` library.  
+- **Session Management:** Users can create or join chat rooms. Previous chat history is loaded when joining a session.    
+- **State Management:** Used React `useState` and `useRef` hooks for managing messages, connection state, and typing users.  
+- **Dynamic UI Updates:** Messages and typing presence update live without page refresh.  
+- **User Customization:** Optional user icons/avatar support when creating or joining a room.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Technologies
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **teleparty-websocket-lib** – WebSocket library for real-time communication
+- **React** – Frontend UI library  
+- **TypeScript** – Type safety and maintainability  
+- **Vite** – Fast development and build tool  
+- **GitHub Pages** – Hosting the live application
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Installation & Development
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+1. Clone the repository:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+git clone https://github.com/NehaMD/teleparty-chat-app-assignment.git
+cd teleparty-chat-app-assignment
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
