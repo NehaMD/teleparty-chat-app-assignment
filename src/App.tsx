@@ -22,12 +22,11 @@ export default function App() {
 
   const messagesEndRef = useRef<HTMLDivElement | null>(null)
 
-  // auto scroll to bottom on new messages
+
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth", block: "end" })
   }, [messages])
 
-  // helper to detect own messages (based on nickname)
   const isOwnMessage = (msg: any) => {
     if (!nickname) return false
     return !msg.isSystemMessage && (msg.userNickname === nickname)
